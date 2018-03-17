@@ -10,8 +10,9 @@ import it.sauronsoftware.cron4j.Scheduler;
 public class CryptoController {
 	
 	public static String lastRippleBidPrice;
-	
+	private static PriceDisplay priceDisplay;
 	public static void main(String[] args) {
+		priceDisplay = new PriceDisplay();
 		new CryptoController();
 	}
 	
@@ -32,16 +33,6 @@ public class CryptoController {
 		});
 		// Starts the scheduler.
 		s.start();
-		// Will run for ten minutes.
-//		
-//		while(true){
-//			try {
-//				Thread.sleep(1000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
 	}
 	
 	// HTTP GET request
@@ -62,7 +53,7 @@ public class CryptoController {
 
 		while ((inputLine = in.readLine()) != null) {
 			CryptoController.lastRippleBidPrice = inputLine.substring(inputLine.indexOf("bid\": ") + 7, inputLine.indexOf("bid\": ") + 14);
-			
+			priceDisplay.setPrice(lastRippleBidPrice);
 			System.out.println("Current Price: " + lastRippleBidPrice);
 		}
 		
