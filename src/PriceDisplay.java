@@ -36,7 +36,7 @@ public class PriceDisplay extends JFrame{
 		int fontSizeToUse = Math.min(newFontSize, componentHeight);
 
 		// Set the label's font size to the newly determined size.
-		label.setFont(new Font(labelFont.getName(), Font.PLAIN, 250));
+		label.setFont(new Font(labelFont.getName(), Font.PLAIN, 150));
 		label.setForeground(Color.RED);
 		label.setVerticalTextPosition(panel.getHeight() / 2);
 		
